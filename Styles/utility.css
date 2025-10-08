@@ -1,0 +1,18 @@
+.white-border{
+    /* border: 2px solid white; */
+}
+.gap {
+    gap: 5px;
+}
+
+.invert{
+    filter: invert();
+}
+
+.flex { 
+    display: flex ;
+}
+
+.left-100 { 
+    left: -100%;
+}

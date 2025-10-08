@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify</title>
+  <link rel="stylesheet" href="Styles/style.css">
+  <link rel="stylesheet" href="Styles/utility.css">
+</head>
+
+<body>
+  <nav class="white-border">
+ <!-- <span> </span> -->
+    <div>
+      <img src="img/ham.svg" class="invert hamburger" alt="">
+      <img id="logo" src="img/logo.svg" alt="">
+    </div>
+
+
+
+    <div class="log-sin">
+      <button class="signup">Sign up</button>
+      <button class="login">Log in</button>
+    </div>
+
+
+  </nav>
+
+  <div class="container white-border">
+    <div class="left">
+      <div class="left-top white-border flex">
+        <div class="library flex">
+          <img src="img/library.svg" class="svg" alt="library">
+          <p>Your Library</p>
+        </div>
+        <div class="cross flex"><img src="img/cross.svg" alt="" class="svg"></div>
+
+      </div>
+
+      <div class="left-middle white-border flex scrollbar">
+
+
+        <div class="songlist">
+          <ul>
+
+          </ul>
+        </div>
+
+      </div>
+      <div class="left-bottom white-border flex scrollbar ">
+        <div class="list">
+          <ul>
+            <li>Legal</li>
+            <li>Safety & private sector</li>
+            <li>privacy policy</li>
+            <li>cookies</li>
+            <li>about ads</li>
+            <li>accsebility</li>
+          </ul>
+        </div>
+        <div><a href="">Cookies</a></div>
+        <button class="earth-btn"><img src="img/earth.svg" alt="">English</button>
+      </div>
+    </div>
+    <div class="right">
+
+      <div class="search ">
+        <div class="inputdiv">
+          <img src="img/search.svg" alt="search">
+          <input type="text" name="search" id="search" placeholder="What do you want to play ? ">
+          <img src="img/browse.svg" alt="browse">
+        </div>
+      </div>
+
+      <div class="main-song-page">
+        <div class="headline">Your Playlists</div>
+
+        <div class="cardcontainer" id="allsongcard">
+          <div class="hide noresult">no results</div>
+        </div>
+      </div>
+
+      <div class="playbar ">
+
+        <!-- play controls  -->
+        <div class="play-controls">
+          <div class="track-info">
+            <div class="scroll-karo">
+
+              <span class="scroll-text" id="main_scroll_text"></span>
+              <span class="scroll-text" id="text_clone"></span>
+            </div>
+              
+          </div>
+
+          <!-- buttons  -->
+          <div class="play-control-button ">
+            <button id="previous" class="play-btn ">
+              <img src="img/previous-svgrepo-com.svg" alt="">
+            </button>
+            <button id="play" class="play-btn">
+              <img src="img/icons8-play-50.png" alt="" class="playbtn-img">
+            </button>
+            <butto id="next" class="play-btn ">
+              <img src="img/next.svg" alt="">
+              </button>
+          </div>
+          <div class="playbar-right">
+            
+            <div class="song-time"></div>
+
+              <div class="volume-bar">
+                <div class="fill"></div>
+                <input type="range" name="vol" id="volume" min="0" max="1" value="1" step="0.01">
+              </div>
+
+            
+          </div>
+
+        </div>
+
+        <!-- seeekbar  -->
+        <div class="seekbar">
+          <div class="fill-bg"></div>
+          <div class="circle">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script src="Styles/script.js"></script>
+  <script src="Styles/styling.js"></script>
+</body>
+
+</html>
