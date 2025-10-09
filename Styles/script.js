@@ -1,7 +1,7 @@
 let currentSong = new Audio();
 let songlist;
 let currFolder;
-const basePath = '/repository-name'; // Change this to your GitHub repo name/path or '' if at root
+const basePath = '/javaminiproject'; // Change this to your GitHub repo name/path or '' if at root
 
 function formatTime(seconds) {
   if (isNaN(seconds) || seconds < 0) {
