@@ -1,6 +1,7 @@
 let currentSong = new Audio();
 let songlist;
 let currFolder;
+const basePath = '/repository-name'; // Change this to your GitHub repo name/path or '' if at root
 
 function formatTime(seconds) {
   if (isNaN(seconds) || seconds < 0) {
@@ -16,7 +17,7 @@ function formatTime(seconds) {
 async function getSongs(folder) {
   try {
     currFolder = folder;
-    const response = await fetch(`/${folder}/songs.json`);
+    const response = await fetch(`${basePath}/${folder}/songs.json`);
     if (!response.ok) {
       return [];
     }
@@ -34,7 +35,7 @@ async function getSongs(folder) {
       <li>
         <div class="card">
           <div class="song-info">
-            <img src="img/music.svg" alt="" class="invert" width="32px">
+            <img src="${basePath}/img/music.svg" alt="" class="invert" width="32px">
             <div class="details">
               <p class="title">${song.title}</p>
               <p class="artist-name">${song.artist}</p>
@@ -42,7 +43,7 @@ async function getSongs(folder) {
           </div>
           <div class="btn" style="margin-right: 10px;">
             <button class="play-btn" data-index="${index}">
-              <img src="img/icons8-play-50.png" width="20px" alt="" style="margin-left: 3px;">
+              <img src="${basePath}/img/icons8-play-50.png" width="20px" alt="" style="margin-left: 3px;">
             </button>
           </div>
         </div>
@@ -60,10 +61,11 @@ async function getSongs(folder) {
 }
 
 const playmusic = (track, pause = false) => {
-  currentSong.src = `/${currFolder}/` + track;
+  // Use basePath with currFolder and track for full src path
+  currentSong.src = `${basePath}/${currFolder}/${track}`;
   if (!pause) {
     currentSong.play();
-    play.innerHTML = `<img src="img/pause.svg" alt="" class="playbtn-img" style="margin-left: 0px; width: 16px;">`;
+    play.innerHTML = `<img src="${basePath}/img/pause.svg" alt="" class="playbtn-img" style="margin-left: 0px; width: 16px;">`;
   }
   document.querySelector(".scroll-text").innerHTML = decodeURI(track);
   document.querySelector(".song-time").innerHTML = "00:00/00:00";
@@ -85,15 +87,15 @@ async function DisplayAlbums() {
   let cardcontainer = document.querySelector(".cardcontainer");
   cardcontainer.innerHTML = "";
   for (const folder of playlistFolders) {
-    let infoResponse = await fetch(`/musics/${encodeURIComponent(folder)}/info.json`);
+    let infoResponse = await fetch(`${basePath}/musics/${encodeURIComponent(folder)}/info.json`);
     let info = await infoResponse.json();
     cardcontainer.innerHTML += `
       <div class="song-card" data-folder="${folder}">
         <div class="poster">
-          <img src="/musics/${encodeURIComponent(folder)}/cover.jpg" alt="">
+          <img src="${basePath}/musics/${encodeURIComponent(folder)}/cover.jpg" alt="">
           <div class="play none">
             <button class="circle-button album-btn" data-folder="${folder}">
-              <img src="img/icons8-play-50.png" alt="">
+              <img src="${basePath}/img/icons8-play-50.png" alt="">
             </button>
           </div>
         </div>
@@ -126,10 +128,10 @@ async function DisplayAlbums() {
       let left = document.querySelector(".left");
       if (left.style.left === "0px") {
         left.style.left = "-100%";
-        ham.src = "img/ham.svg";
+        ham.src = `${basePath}/img/ham.svg`;
       } else {
         left.style.left = "0";
-        ham.src = "img/close.svg";
+        ham.src = `${basePath}/img/close.svg`;
       }
     });
   });
@@ -179,10 +181,10 @@ async function main() {
 
   play.addEventListener("click", () => {
     if (currentSong.paused) {
-      play.innerHTML = `<img src="img/pause.svg" alt="" class="playbtn-img" style="margin-left: 0px; width : 16px;">`;
+      play.innerHTML = `<img src="${basePath}/img/pause.svg" alt="" class="playbtn-img" style="margin-left: 0px; width : 16px;">`;
       currentSong.play();
     } else {
-      play.innerHTML = `<img src="img/icons8-play-50.png" alt="" class="playbtn-img">`;
+      play.innerHTML = `<img src="${basePath}/img/icons8-play-50.png" alt="" class="playbtn-img">`;
       currentSong.pause();
     }
   });
